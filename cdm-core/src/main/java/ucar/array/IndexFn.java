@@ -13,7 +13,7 @@ import javax.annotation.concurrent.Immutable;
 
 /** Translate between multidimensional index and 1-d arrays. */
 @Immutable
-final class IndexFn implements Iterable<Integer> {
+public final class IndexFn implements Iterable<Integer> {
 
   /**
    * Get the 1-d index indicated by the list of multidimensional indices.

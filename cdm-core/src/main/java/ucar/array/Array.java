@@ -135,7 +135,7 @@ public abstract class Array<T> implements Iterable<T> {
   abstract Storage<T> storage();
 
   /** Get the IndexFn for this Array. */
-  IndexFn indexFn() {
+  public IndexFn indexFn() {
     return indexFn;
   }
 
