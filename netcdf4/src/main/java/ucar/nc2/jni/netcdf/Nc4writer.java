@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import ucar.array.ArrayType;
 import ucar.ma2.Array;
 import ucar.ma2.ArrayStructure;
@@ -86,12 +85,12 @@ public class Nc4writer extends Nc4reader implements IospFileWriter {
 
   @Override
   public void openForWriting(String location, Group.Builder rootGroup, CancelTask cancelTask) throws IOException {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
 
   @Override
   public NetcdfFile getOutputFile() {
-    throw new NotImplementedException();
+    throw new UnsupportedOperationException();
   }
 
   // * Create new file, populate it from the objects in ncfileb.
