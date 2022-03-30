@@ -25,7 +25,7 @@ jobs:
           cache: 'gradle'
 
       - name: Build with Gradle
-        run: ./gradlew :cdm-core:build
+        run: ./gradlew -x test build
 
       - name: Publish to GitHub Packages
         run: >-
@@ -34,4 +34,5 @@ jobs:
           -Pnexus.password=${{ secrets.GITHUB_TOKEN }}
           -PsnapshotsUrl=${{ env.REPOSITORY_URL }}
           -PreleasesUrl=${{ env.REPOSITORY_URL }}
-          :cdm-core:publish
+          -x test
+          publish
