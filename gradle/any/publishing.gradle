@@ -20,7 +20,7 @@ publishing {
     } else {
       maven {
         name = 'releases'
-        url = project.hasProperty('snapshotsUrl') ? snapshotsUrl : unidataReleasesUrl
+        url = project.hasProperty('releasesUrl') ? releasesUrl : unidataReleasesUrl
         // Set credentials in root/publishing.gradle.
       }
     }
