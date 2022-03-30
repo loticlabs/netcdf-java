@@ -1,0 +1,37 @@
+name: Gradle Package
+
+on:
+  push:
+    branches: [ "6.x-lotic" ]
+
+env:
+  REPOSITORY_URL: https://maven.pkg.github.com/${{ github.repository }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'gradle'
+
+      - name: Build with Gradle
+        run: ./gradlew :cdm-core:build
+
+      - name: Publish to GitHub Packages
+        run: >-
+          ./gradlew
+          -Pnexus.username=${{ github.actor }}
+          -Pnexus.password=${{ secrets.GITHUB_TOKEN }}
+          -PsnapshotsUrl=${{ env.REPOSITORY_URL }}
+          -PreleasesUrl=${{ env.REPOSITORY_URL }}
+          :cdm-core:publish

@@ -14,13 +14,13 @@ publishing {
     if (version.endsWith('SNAPSHOT')) {
       maven {
         name = 'snapshots'
-        url = 'https://artifacts.unidata.ucar.edu/repository/unidata-snapshots/'
+        url = project.hasProperty('snapshotsUrl') ? snapshotsUrl : 'https://artifacts.unidata.ucar.edu/repository/unidata-snapshots/'
         // Set credentials in root/publishing.gradle.
       }
     } else {
       maven {
         name = 'releases'
-        url = 'https://artifacts.unidata.ucar.edu/repository/unidata-releases/'
+        url = project.hasProperty('snapshotsUrl') ? snapshotsUrl : unidataReleasesUrl
         // Set credentials in root/publishing.gradle.
       }
     }
